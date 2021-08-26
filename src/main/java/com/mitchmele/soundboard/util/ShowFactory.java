@@ -17,17 +17,20 @@ public class ShowFactory {
             "STS9"
     );
 
-    private ShowFactory() { }
+    private ShowFactory() {
+    }
 
     public static ShowFactory getInstance() {
         return INSTANCE;
     }
 
     public List<ShowDO> produceShows(int numberOfShows) {
+
         List<ShowDO> shows = new ArrayList<>();
 
-        for(int i = 0; i < numberOfShows; i++) {
-            Random rand = new Random();
+        Random rand = new Random();
+
+        for (int i = 0; i < numberOfShows; i++) {
             String bandName = getBandName(rand);
             ShowDO show = ShowDO.builder()
                     .bandName(bandName)
@@ -47,3 +50,22 @@ public class ShowFactory {
         return "www." + bandName + number + ".com";
     }
 }
+
+/*
+
+This is great for an Api. The implementation is not exposed so it can change anytime. The client just calls the static factory method like before
+
+
+ A second advantage of static factory methods is that,
+ unlike constructors, they are not required to create a new object each time they're invoked.
+
+ The ability of static factory methods to return the same object from repeated invocations allows classes to maintain strict control over what instances exist at any time.
+ Classes that do this are said to be instance-controlled. There are several reasons to write instance-controlled classes. Instance control allows a class to guarantee that it is a singleton (Item 3)
+
+
+ they can return an object of any subtype of their return type. This gives you great flexibility in choosing the class of the returned object.
+
+One application of this flexibility is that an API can return objects without making their classes public.
+Hiding implementation classes in this fashion leads to a very compact API. This technique lends itself to interface-based frameworks (Item 18),
+ where interfaces provide natural return types for static factory methods.
+ */

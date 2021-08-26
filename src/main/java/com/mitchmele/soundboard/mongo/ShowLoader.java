@@ -22,7 +22,7 @@ public class ShowLoader implements ApplicationListener<ContextRefreshedEvent> {
 
         ShowFactory factory = ShowFactory.getInstance();
 
-        showRepository.saveAll(factory.produceShows(10));
+        showRepository.saveAll(factory.produceShows(1));
 
         log.info("Finished Loading DB. Total Records Loaded: {}", showRepository.count());
     }
