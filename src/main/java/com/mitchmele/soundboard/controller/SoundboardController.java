@@ -23,6 +23,7 @@ public class SoundboardController {
         return showService.getAllShowsByBandName(band);
     }
 
+    @CrossOrigin
     @PostMapping("/videos")
     public List<YouTubeItem> getVideos(@RequestBody SearchContentRequest request) {
         return youtubeService.fetchVideosByQuery(request.getQueryTerm());

@@ -82,7 +82,6 @@ class SoundboardControllerTest {
                 .build();
 
         YouTubeItem video1 = YouTubeItem.builder()
-                .videoId("1")
                 .description("phish show")
                 .thumbnailUrl("www.url.com")
                 .build();

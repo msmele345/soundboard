@@ -1,7 +1,5 @@
 package com.mitchmele.soundboard.video.model;
 
-import java.util.Date;
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -20,9 +18,9 @@ public class YouTubeItem {
 
     @Id
     private String _id;
-    private String videoId;
     private String title;
     private String url;
     private String thumbnailUrl;
     private String description;
+//    private String videoDuration;
 }
