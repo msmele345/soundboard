@@ -1,7 +1,7 @@
 package com.mitchmele.soundboard.video.model.service;
 
 import com.google.api.services.youtube.model.*;
-import com.mitchmele.soundboard.video.YouTubeSearchListClient;
+import com.mitchmele.soundboard.video.YouTubeSearchListService;
 import com.mitchmele.soundboard.video.YouTubeService;
 import com.mitchmele.soundboard.video.model.YouTubeItem;
 import org.junit.jupiter.api.Test;
@@ -20,7 +20,7 @@ import static org.mockito.Mockito.when;
 class YouTubeServiceTest {
 
     @Mock
-    private YouTubeSearchListClient searchListClient;
+    private YouTubeSearchListService searchListClient;
 
     @InjectMocks
     private YouTubeService youTubeService;

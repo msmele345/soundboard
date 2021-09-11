@@ -7,21 +7,19 @@ import com.google.api.services.youtube.YouTube;
 import com.google.api.services.youtube.model.SearchListResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Component;
+
+import java.io.IOException;
 
 @Slf4j
 @Component
 @RequiredArgsConstructor
-public class YouTubeSearchListClient {
+public class YouTubeClient {
 
     private final YoutubeProperties youtubeProperties;
-
     private static final JsonFactory JSON_FACTORY = JacksonFactory.getDefaultInstance();
 
-    @Cacheable("videos")
-    public SearchListResponse getSearchListResponse(String query)  {
-
+    public SearchListResponse fetchVideos(String query) {
         try {
             YouTube youTubeClient = getYouTube();
 
@@ -32,7 +30,7 @@ public class YouTubeSearchListClient {
 
             request.setQ(query);
 
-            request.setType("video");
+            request.setType(youtubeProperties.getType());
 
             request.setMaxResults(youtubeProperties.getMaxResults());
 
@@ -41,14 +39,13 @@ public class YouTubeSearchListClient {
             log.info("Calling YouTube API for {} videos", query);
 
             return request.execute();
-
-        } catch (Exception e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
         return null;
     }
 
-    private YouTube getYouTube() {
+    private static YouTube getYouTube() {
         return new YouTube.Builder(new NetHttpTransport(), JSON_FACTORY, (request) -> { })
                 .setApplicationName("Soundstage").build();
     }

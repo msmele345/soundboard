@@ -13,7 +13,7 @@ import static org.springframework.util.CollectionUtils.isEmpty;
 @RequiredArgsConstructor
 public class YouTubeService {
 
-    private final YouTubeSearchListClient searchListClient;
+    private final YouTubeSearchListService searchListClient;
 
     public List<YouTubeItem> fetchVideosByQuery(String queryTerm) {
 

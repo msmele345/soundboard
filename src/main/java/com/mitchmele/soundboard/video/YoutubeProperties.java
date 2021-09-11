@@ -10,5 +10,6 @@ import org.springframework.stereotype.Component;
 public class YoutubeProperties {
 
     private String apiKey;
+    private String type;
     private Long maxResults;
 }

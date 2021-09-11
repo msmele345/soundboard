@@ -1,3 +1,4 @@
 youtube:
-  apiKey: beans
-  maxResults: 5
+  apiKey: fred
+  maxResults: 6
+  type: video
