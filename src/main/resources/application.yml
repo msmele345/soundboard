@@ -1,4 +1,4 @@
 youtube:
-  apiKey: fred
+  apiKey:
   maxResults: 6
   type: video

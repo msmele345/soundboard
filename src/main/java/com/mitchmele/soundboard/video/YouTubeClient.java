@@ -17,6 +17,7 @@ import java.io.IOException;
 public class YouTubeClient {
 
     private final YoutubeProperties youtubeProperties;
+
     private static final JsonFactory JSON_FACTORY = JacksonFactory.getDefaultInstance();
 
     public SearchListResponse fetchVideos(String query) {

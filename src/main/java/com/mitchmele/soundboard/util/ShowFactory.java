@@ -1,9 +1,12 @@
 package com.mitchmele.soundboard.util;
 
 import com.mitchmele.soundboard.show.model.ShowDO;
+
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
+
 import static java.util.Arrays.asList;
 
 public class ShowFactory {
@@ -17,14 +20,15 @@ public class ShowFactory {
             "STS9"
     );
 
-    private ShowFactory() {
-    }
+    private ShowFactory() { }
 
     public static ShowFactory getInstance() {
         return INSTANCE;
     }
 
     public List<ShowDO> produceShows(int numberOfShows) {
+
+        HashMap<String, List<String>> bandHashMap = newBandHashMap();
 
         List<ShowDO> shows = new ArrayList<>();
 
@@ -41,6 +45,16 @@ public class ShowFactory {
 
         return shows;
     }
+
+    private static <K, V> HashMap<K, V> newBandHashMap() {
+        return new HashMap<K, V>();
+    }
+
+    /*
+     Map<String, List<String>> anagrams =
+    new HashMap<String, List<String>>();
+
+    * */
 
     private String getBandName(Random rand) {
         return bandNames.get(rand.nextInt(bandNames.size()));
@@ -60,7 +74,8 @@ This is great for an Api. The implementation is not exposed so it can change any
  unlike constructors, they are not required to create a new object each time they're invoked.
 
  The ability of static factory methods to return the same object from repeated invocations allows classes to maintain strict control over what instances exist at any time.
- Classes that do this are said to be instance-controlled. There are several reasons to write instance-controlled classes. Instance control allows a class to guarantee that it is a singleton (Item 3)
+ Classes that do this are said to be instance-controlled. There are several reasons to write instance-controlled classes.
+ Instance control allows a class to guarantee that it is a singleton (Item 3)
 
 
  they can return an object of any subtype of their return type. This gives you great flexibility in choosing the class of the returned object.
